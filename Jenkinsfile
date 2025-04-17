@@ -10,9 +10,10 @@ pipeline {
             steps {
                 echo 'Ejecutando Clone repo'
                 sh 'rm -rf glowing-happiness'
-                sh 'https://github.com/germanalvarez8/glowing-happiness.git'
-                sh 'cd glowing-happiness'
-                sh 'python3 myscript.py'
+                sh 'git clone https://github.com/germanalvarez8/glowing-happiness.git'
+                dir('glowing-happiness') {  // Cambia al directorio del repo
+                    sh 'python3 myscript.py'
+                }
             }
         }
         stage('Exec script') {
